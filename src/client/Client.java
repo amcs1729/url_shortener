@@ -1,7 +1,4 @@
 package client;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.net.Socket;
 
 public class Client
@@ -35,56 +32,3 @@ public class Client
 
     }
 }
-
-
-//public class GetMessageHandler
-
-
-
-/*
-public class Main
-{
-    private final int PORT = 6666;
-
-
-    public void send_message()
-    {
-        DataInputStream in = null;
-        DataOutputStream out = null;
-        Socket socket = null;
-
-        try
-        {
-            socket = new Socket("localhost" , PORT);
-            System.out.println("Connected");
-
-            in  = new DataInputStream(System.in);
-            out    = new DataOutputStream(socket.getOutputStream());
-        }
-
-        catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-
-
-    }
-
-
-
-    public static void main(String args[])
-    {
-        Main my_client = new Main();
-        my_client.send_message();
-    }
-
-}
-
-
-public class SendMessage extends Thread
-{
-    pubb
-
-}
-
- */
