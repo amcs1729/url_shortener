@@ -13,8 +13,9 @@ public class Server// implements Runnable
     public static void main(String args[])
     {
         boolean stop=false;
-        try {
-            DataInputStream in;
+        try
+        {
+
 
             ServerSocket ss = new ServerSocket(PORT);
             System.out.println("Server running\nListening to PORT " + PORT);
@@ -22,28 +23,12 @@ public class Server// implements Runnable
             while (true)
             {
                 Socket connection = ss.accept();
-
-                if (verbose)
-                {
-                    System.out.println("Connection opened @ " + new Date());
-
-                }
-
-                in = new DataInputStream(connection.getInputStream());
-                String message = in.readUTF();
-                while (!message.equalsIgnoreCase("over"))
-                {
-                    System.out.println(message);
-                    message = in.readUTF();
-                    stop = true;
-
-                }
-                connection.close();
-                ss.close();
-
+                Thread t =  new ClientHandler(verbose , connection);
+                t.run();
             }
 
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
